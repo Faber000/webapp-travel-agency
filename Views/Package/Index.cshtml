@@ -3,7 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="text-center">Here's the Packages</h1>
+<h1 class="text-center">Manage Packages</h1>
 
 @model List<PacchettoViaggio>
 
@@ -11,7 +11,7 @@
 <div class="package-container d-flex flex-wrap justify-content-center">
     @foreach (PacchettoViaggio package in Model)
     {
-        <div class="package-card d-flex flex-column align-items-center">
+        <div class="package-card mx-3 d-flex flex-column align-items-center">
             <div>
                 <image class="package-img" src="@package.Image"></image>
             </div>

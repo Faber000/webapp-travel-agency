@@ -15,19 +15,40 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #80afcd;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    font-family: "Inter", sans-serif;
+    
+}
+
+button {
+    background-color: #e6ecff;
+    color: #3363ff;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    height: 40px;
+}
+
+.package-card  button {
+    width: 90px;
+    height: 50px;
+}
+
+.package-card:hover {
+    transform: translateY(-.5%);
+    box-shadow: 0 4rem 8rem rgba(0, 0, 0, .2);
 }
 
 .package-card {
-    width: 400px;
+    margin: 20px;
+    width: 350px;
     height: 500px;
     padding: 0;
-    background-color: lightgray;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.315);
+    background-color: white;
+    box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
 }
 
 .package-img {
-    width: 400px;
+    width: 350px;
     margin-top: 0;
 }

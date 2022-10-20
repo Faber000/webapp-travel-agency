@@ -18,7 +18,7 @@
             if (res.data.length != 0) {
                 document.querySelector('.package-container').innerHTML =''
                 res.data.forEach(package => {
-                    document.querySelector('.package-container').innerHTML =
+                    document.querySelector('.package-container').innerHTML +=
                         `
                         <div class="package-card d-flex flex-column align-items-center">
                             <div>

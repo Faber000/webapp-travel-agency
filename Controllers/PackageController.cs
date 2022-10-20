@@ -44,6 +44,45 @@ namespace webapp_travel_agency.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            using (TravelAgency context = new TravelAgency())
+            {
+                PacchettoViaggio package = context.Packages
+                    .Where(package => package.Id == id).FirstOrDefault();
+
+                return View("Update", package);
+
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id, PacchettoViaggio formData)
+        {
+            using (TravelAgency context = new TravelAgency())
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("Update", formData);
+                }
+
+                PacchettoViaggio package = context.Packages.Where(p => p.Id == id).FirstOrDefault();
+
+                package.Title = formData.Title;
+                package.Description = formData.Description;
+                package.Price = formData.Price;
+                package.Image = formData.Image;
+
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+
+            }
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)

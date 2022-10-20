@@ -1,0 +1,44 @@
+﻿@model PacchettoViaggio
+
+<div class="container">
+
+    <div class="d-flex align-items-center">
+        <h1 class="text-center mb-4">You're Updating a Package</h1>
+    </div>
+
+    <form asp-controller="Package" asp-action="Update" method="post" asp-route-id="@Model.Id">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-4">
+            <h3>Title: </h3>
+            <input asp-for="Title" />
+            <span asp-validation-for="Title"></span>
+
+        </div>
+
+        <div class="mb-4">
+            <h3>Description: </h3>
+            <input asp-for="Description" />
+            <span asp-validation-for="Description"></span>
+
+        </div>
+
+        <div class="mb-4">
+            <h3>Image: </h3>
+            <input asp-for="Image" />
+            <span asp-validation-for="Image"></span>
+
+        </div>
+
+        <div class="mb-4">
+            <h3>Price: </h3>
+            <input asp-for="Price" />
+            <span asp-validation-for="Price"></span>
+
+        </div>
+
+        <div>
+            <input class="btn submit-button" type="submit" value="Save" />
+        </div>
+    </form>
+</div>

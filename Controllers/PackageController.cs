@@ -43,5 +43,22 @@ namespace webapp_travel_agency.Controllers
             return RedirectToAction("Index");
 
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            using (TravelAgency context = new TravelAgency())
+            {
+                PacchettoViaggio package = context.Packages.Where(package => package.Id == id).FirstOrDefault();
+
+                context.Packages.Remove(package);
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+        }
     }
+
 }

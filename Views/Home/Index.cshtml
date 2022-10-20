@@ -1,19 +1,39 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<h1 class="text-center">Homepage</h1>
 
+<div class="home-container d-flex flex-column align-items-center">
+    <h1 class="my-2">Check Out our Travel Packages!</h1>
+    <div class="search-div d-flex align-items-center">
+        <input class="m-xl-3 my-2" type="text" placeholder="Search by Title" id="search-input" row="10" />
+        <button class="m-xl-3" id="search-button">Search</button>
+    </div>
 
-<div class="package-container d-flex flex-wrap justify-content-center align-items-center"></div>
+    <div class="package-container d-flex flex-wrap justify-content-center align-items-center"></div>
+</div>
+
 
 @model PacchettoViaggio 
 
 <script type="text/javascript">
 
-    getPackages();
+    getPackages("");
 
-    function getPackages() {
-        axios.get('/api/package/get').then(res => {
+    document.querySelector('#search-button').addEventListener('click', SearchPackage);
+
+    function SearchPackage() {
+        let title = document.querySelector('#search-input').value;
+        getPackages(title);
+    }
+
+    function getPackages(title) {
+        axios.get('/api/package/get', {
+
+            params: {
+                title: title
+            }
+            
+        }).then(res => {
             console.log(res);
             if (res.data.length != 0) {
                 document.querySelector('.package-container').innerHTML =''
@@ -26,9 +46,9 @@
                             </div>
 
                             <div class="d-flex flex-column justify-content-center align-items-center mx-4">
-                                    <div class="my-2"><h4>${package.title}</h4></div>
-                                <div class="my-2">Descrizione ${package.description}</div>
-                                <div class="my-2">Prezzo: ${package.price} $</div>
+                                    <div class="my-3"><h4>${package.title}</h4></div>
+                                <div class="my-2">${package.description}</div>
+                                <div class="my-2">${package.price} $</div>
                             </div>
                      </div>
                         `;

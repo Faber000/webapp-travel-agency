@@ -16,11 +16,18 @@ namespace webapp_travel_agency.Controllers.Api
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(string? title)
         {
             IQueryable<PacchettoViaggio> packages;
-            
-            packages = context.Packages;
+
+            if (title != null)
+            {
+                packages = context.Packages.Where(p => p.Title.ToLower().Contains(title.ToLower()));
+            }
+            else
+            {
+                packages = context.Packages;
+            }
 
             return Ok(packages);
         }

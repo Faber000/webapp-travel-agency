@@ -20,13 +20,13 @@ body {
     
 }
 
-button {
+button, .submit-button {
     background-color: #e6ecff;
     color: #3363ff;
     border: none;
     border-radius: 10px;
     width: 200px;
-    height: 40px;
+    height: 60px;
 }
 
 .package-card  button {
@@ -51,4 +51,16 @@ button {
 .package-img {
     width: 350px;
     margin-top: 0;
+}
+
+.package-container {
+    margin: 30px;
+}
+
+#search-input {
+    background-color: #e6ecff;
+    border: none;
+    border-radius: 10px;
+    width: 500px;
+    height: 50px;
 }

@@ -3,24 +3,24 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Here's the Packages</h1>
+<h1 class="text-center">Here's the Packages</h1>
 
 @model List<PacchettoViaggio>
 
 <a href="@Url.Action("Create","Package")"><button class="create-button">Create Package</button></a>
-<div class="package-container d-flex flex-wrap justify-content-center align-items-center">
+<div class="package-container d-flex flex-wrap justify-content-center">
     @foreach (PacchettoViaggio package in Model)
     {
-        <div class="card d-flex flex-row">
+        <div class="package-card d-flex flex-column align-items-center">
             <div>
-                <image class="pizza-img" src="@package.Image"></image>
+                <image class="package-img" src="@package.Image"></image>
             </div>
 
-            <div class="d-flex flex-column justify-content-center mx-4">
-                <div><h4>@package.Title</h4></div>
-                <div>Descrizione @package.Description</div>
-                <div>Prezzo: @package.Price $</div>
-                <div class="d-flex flex-row">
+            <div class="d-flex flex-column justify-content-center align-items-center mx-4">
+                <div class="my-2"><h4>@package.Title</h4></div>
+                <div class="my-2">Descrizione @package.Description</div>
+                <div class="my-2">Prezzo: @package.Price $</div>
+                <div class="d-flex flex-row my-2">
                     <a class="mx-2" href="@Url.Action("Details", "Package", new { id = package.Id})">
                         <button>Dettagli</button>
                     </a>

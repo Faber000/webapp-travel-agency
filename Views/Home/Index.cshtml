@@ -1,8 +1,43 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<h1 class="text-center">Homepage</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<div class="package-container d-flex flex-wrap justify-content-center align-items-center"></div>
+
+@model PacchettoViaggio 
+
+<script type="text/javascript">
+
+    getPackages();
+
+    function getPackages() {
+        axios.get('/api/package/get').then(res => {
+            console.log(res);
+            if (res.data.length != 0) {
+                document.querySelector('.package-container').innerHTML =''
+                res.data.forEach(package => {
+                    document.querySelector('.package-container').innerHTML =
+                        `
+                        <div class="package-card d-flex flex-column align-items-center">
+                            <div>
+                                    <image class="package-img" src="${package.image}"></image>
+                            </div>
+
+                            <div class="d-flex flex-column justify-content-center align-items-center mx-4">
+                                    <div class="my-2"><h4>${package.title}</h4></div>
+                                <div class="my-2">Descrizione ${package.description}</div>
+                                <div class="my-2">Prezzo: ${package.price} $</div>
+                            </div>
+                     </div>
+                        `;
+                });
+            }
+        }).catch(err => {
+        });
+        console.log("errore");
+    }
+
+</script>
+

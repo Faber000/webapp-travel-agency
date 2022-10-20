@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Here's the Packages</h1>
+
+@model List<PacchettoViaggio>
+
+<a href="@Url.Action("Create","Package")"><button class="create-button">Create Package</button></a>
+<div class="package-container d-flex flex-wrap justify-content-center align-items-center">
+    @foreach (PacchettoViaggio package in Model)
+    {
+        <div class="card d-flex flex-row">
+            <div>
+                <image class="pizza-img" src="@package.Image"></image>
+            </div>
+
+            <div class="d-flex flex-column justify-content-center mx-4">
+                <div><h4>@package.Title</h4></div>
+                <div>Descrizione @package.Description</div>
+                <div>Prezzo: @package.Price $</div>
+                <div class="d-flex flex-row">
+                    <a class="mx-2" href="@Url.Action("Details", "Package", new { id = package.Id})">
+                        <button>Dettagli</button>
+                    </a>
+
+                    <a class="mx-2" href="@Url.Action("Update", "Package", new { id = package.Id})">
+                        <button>Modifica</button>
+                    </a>
+
+                    <form asp-controller="Package" asp-action="Delete" asp-route-id="@package.Id" class="mx-2" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit">Elimina</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

@@ -57,7 +57,7 @@ button, .submit-button {
     margin: 30px;
 }
 
-#search-input {
+input {
     background-color: #e6ecff;
     border: none;
     border-radius: 10px;

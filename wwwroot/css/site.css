@@ -79,3 +79,21 @@ input {
     margin-top:20px;
 }
 
+.message-box {
+    width: 500px;
+    height: 100px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.package-details-container {
+    background-color: white;
+    width: 800px;
+    padding: 0;
+}
+
+.image-detail {
+    width: 400px;
+}

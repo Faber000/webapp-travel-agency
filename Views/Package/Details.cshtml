@@ -1,15 +1,21 @@
 ﻿@model PacchettoViaggio
 
-<div class="container package-details-container d-flex align-items-center">
-    <image style="width: 400px" src="@Model.Image"></image>
-    <div class="d-flex flex-column mx-4">
-        <h1>@Model.Title</h1>
-        <h2>@Model.Price</h2>
-        <h3>@Model.Description</h3>
-        @foreach (Message message in @Model.Messages)
-        {
-            <div>@message.Title</div>
-        }
+<div class="container d-flex flex-column align-items-center justify-content-center">
+    <div class="container package-details-container d-flex align-items-center">
+        <image class="image-detail" src="@Model.Image"></image>
+        <div class="d-flex flex-column mx-4">
+            <h1>@Model.Title</h1>
+            <h2>@Model.Price $</h2>
+            <h3>@Model.Description</h3>
+        </div>
     </div>
-    </div>
+
+    <h3 class="mt-5">Messages for the package:</h3>
+    @foreach (Message message in @Model.Messages)
+    {
+        <div class="message-box d-flex justify-content-center align-items-center flex-column">
+            <h4>@message.Title</h4>
+            <div>@message.Text</div>
+        </div>
+    }
 </div>

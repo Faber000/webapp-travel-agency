@@ -4,36 +4,36 @@
 <div class="container">
 
     <div class="d-flex align-items-center">
-        <h1 class="text-center mb-4">Your're creating a package</h1>
+        <h1 class="text-center mb-4">Your're Creating a Package</h1>
     </div>
 
     <form asp-controller="Package" asp-action="Create" method="post">
         @Html.AntiForgeryToken()
 
         <div class="mb-4">
-            <h3>Title: </h3>
-            <input asp-for="Title" />
+            
+            <input placeholder="Title" asp-for="Title" />
             <span asp-validation-for="Title"></span>
 
         </div>
 
         <div class="mb-4">
-            <h3>Description: </h3>
-            <input asp-for="Description" />
+            
+            <input placeholder="Description" asp-for="Description" />
             <span asp-validation-for="Description"></span>
 
         </div>
 
         <div class="mb-4">
-            <h3>Image: </h3>
-            <input asp-for="Image" />
+            
+            <input placeholder="Image"  asp-for="Image" />
             <span asp-validation-for="Image"></span>
 
         </div>
 
         <div class="mb-4">
-            <h3>Price: </h3>
-            <input asp-for="Price" />
+            
+            <input placeholder="Price"  asp-for="Price" />
             <span asp-validation-for="Price"></span>
 
         </div>

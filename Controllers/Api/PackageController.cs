@@ -31,5 +31,13 @@ namespace webapp_travel_agency.Controllers.Api
 
             return Ok(packages);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            PacchettoViaggio package = context.Packages.Where(p => p.Id == id).FirstOrDefault();
+
+            return Ok(package);
+        }
     }
 }

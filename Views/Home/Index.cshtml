@@ -5,7 +5,7 @@
 <div class="home-container d-flex flex-column align-items-center">
     <h1 class="my-2">Check Out our Travel Packages!</h1>
     <div class="search-div d-flex align-items-center">
-        <input class="m-xl-3 my-2" type="text" placeholder="Search by Title" id="search-input" row="10" />
+        <input class="m-xl-3 my-2" type="text" placeholder="   Search by Title" id="search-input" row="10" />
         <button class="m-xl-3" id="search-button">Search</button>
     </div>
 
@@ -40,15 +40,16 @@
                 res.data.forEach(package => {
                     document.querySelector('.package-container').innerHTML +=
                         `
-                        <div class="package-card d-flex flex-column align-items-center">
+                        <div class="package-card d-flex flex-column align-items-center ">
                             <div>
                                     <image class="package-img" src="${package.image}"></image>
                             </div>
 
                             <div class="d-flex flex-column justify-content-center align-items-center mx-4">
                                     <div class="my-3"><h4>${package.title}</h4></div>
-                                <div class="my-2">${package.description}</div>
+                                <div class="my-2 text-center">${package.description}</div>
                                 <div class="my-2">${package.price} $</div>
+                                <a href="/Home/Details/${package.id}"><button id="explore-button">Esplora</button></a>
                             </div>
                      </div>
                         `;
@@ -58,6 +59,5 @@
         });
         console.log("errore");
     }
-
 </script>
 

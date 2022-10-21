@@ -18,6 +18,18 @@ namespace webapp_travel_agency.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            using (TravelAgency context = new TravelAgency())
+            {
+
+                PacchettoViaggio package = context.Packages.Where(p => p.Id == id).FirstOrDefault();
+
+                return View("Details", package);
+            }
+        }
+
         public IActionResult Privacy()
         {
             return View();

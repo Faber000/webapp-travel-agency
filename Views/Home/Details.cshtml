@@ -1,0 +1,25 @@
+﻿@model PacchettoViaggio
+
+<h1>Dettaglio</h1>
+<script type="text/javascript">
+    axios.get('/api/package/get/').then(res => {
+        console.log(res);
+        if (res.data.length != 0) {
+            res.data.forEach(package => {
+                document.querySelector('main').innerHTML = '';
+                document.querySelector('main').innerHTML +=
+                    `
+                            <div class="container package-details-container d-flex align-items-center">
+                            <image style="width: 400px" src="@Model.Image"></image>
+                            <div class="d-flex flex-column mx-4">
+                            <h1>@Model.Title</h1>
+                            <h2>@Model.Price $</h2>
+                            <h3> @Model.Description</h3>
+   
+                    `;
+            });
+        }
+    }).catch(err => {
+    });
+    console.log("errore");
+</script>

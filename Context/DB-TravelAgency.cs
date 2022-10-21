@@ -5,7 +5,7 @@ using webapp_travel_agency.Models;
 public class TravelAgency : DbContext
 {
     public DbSet<PacchettoViaggio> Packages { get; set; }
-
+    public DbSet<Message> Messages { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

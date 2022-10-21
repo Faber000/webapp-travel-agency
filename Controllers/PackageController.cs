@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using webapp_travel_agency.Models;
 
 namespace webapp_travel_agency.Controllers
@@ -105,7 +106,7 @@ namespace webapp_travel_agency.Controllers
             using (TravelAgency context = new TravelAgency())
             {
 
-                PacchettoViaggio package= context.Packages.Where(p => p.Id == id).FirstOrDefault();
+                PacchettoViaggio package = context.Packages.Where(p => p.Id == id).Include("Messages").FirstOrDefault();
 
                 return View("Details", package);
             }

@@ -6,5 +6,10 @@
         <h1>@Model.Title</h1>
         <h2>@Model.Price</h2>
         <h3>@Model.Description</h3>
+        @foreach (Message message in @Model.Messages)
+        {
+            <div>@message.Title</div>
+        }
+    </div>
     </div>
 </div>

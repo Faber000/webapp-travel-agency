@@ -1,13 +1,37 @@
 ﻿@model PacchettoViaggio
 
-<h1>Dettaglio</h1>
+<div class="container d-flex flex-column">
+    <div class="package-container"></div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center my-4">
+        <h1>Send a Message</h1>
+        <form>
+            <div class="my-4">
+                <input placeholder="Title" id="message-title"/>
+            </div>
+
+            <div class="mb-4">
+                <input placeholder="Text" id="message-text" />
+            </div>
+
+            <div>
+                <input class="btn submit-button" type="submit" value="Send" />
+            </div>
+        </form>
+    </div>
+    
+</div>
 <script type="text/javascript">
+
+    const form = document.querySelector("form")
+    form.addEventListener("submit", e => sendMessage(e))
+
     axios.get('/api/package/get/').then(res => {
         console.log(res);
         if (res.data.length != 0) {
             res.data.forEach(package => {
-                document.querySelector('main').innerHTML = '';
-                document.querySelector('main').innerHTML +=
+                document.querySelector('.package-container').innerHTML = '';
+                document.querySelector('.package-container').innerHTML +=
                     `
                             <div class="container package-details-container d-flex align-items-center">
                             <image style="width: 400px" src="@Model.Image"></image>
@@ -22,4 +46,18 @@
     }).catch(err => {
     });
     console.log("errore");
+
+    function sendMessage(e) {
+        e.preventDefault();
+        axios.post("/api/message/send", {
+            title: document.querySelector('#message-title').value,
+            text: document.querySelector('#message-text').value,
+            pacchettoViaggioId: @Model.Id,
+
+        }).then( res => {
+            console.log(res);
+        alert("Messaggio Inviato")
+    })
+        .catch(err => console.log(err))
+    }
 </script>

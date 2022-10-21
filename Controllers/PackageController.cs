@@ -98,6 +98,18 @@ namespace webapp_travel_agency.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            using (TravelAgency context = new TravelAgency())
+            {
+
+                PacchettoViaggio package= context.Packages.Where(p => p.Id == id).FirstOrDefault();
+
+                return View("Details", package);
+            }
+        }
     }
 
 }
